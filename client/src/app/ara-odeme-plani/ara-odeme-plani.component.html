@@ -1,0 +1,27 @@
+<div *ngIf="isValid && odemePlani" class="container mt-4">
+  <h2 class="text-center mb-4">Ara Ödeme Planı</h2>
+
+  <!-- Responsive table with Bootstrap -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Taksit No</th>
+          <th scope="col">Taksit</th>
+          <th scope="col">Anapara</th>
+          <th scope="col">Faiz</th>
+          <th scope="col">Kalan Tutar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let satir of odemePlani.satirlar">
+          <td>{{ satir.taksitNo }}</td>
+          <td>{{ satir.taksit | number: '1.2-2' }}</td>
+          <td>{{ satir.anapara | number: '1.2-2' }}</td>
+          <td>{{ satir.faiz | number: '1.2-2' }}</td>
+          <td>{{ satir.kalanTutar | number: '1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

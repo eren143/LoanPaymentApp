@@ -1,0 +1,8 @@
+/* Main Content: styles.css or app.component.css */
+.content {
+    padding: 20px;
+  }
+  .grid-container {
+    display: grid;
+  }
+  

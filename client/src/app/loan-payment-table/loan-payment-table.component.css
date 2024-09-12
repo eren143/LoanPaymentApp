@@ -1,0 +1,23 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Creates 5 equal-width columns */
+  gap: 3px; /* Optional: adds space between grid items */
+}
+
+.grid-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid black; /* Adding black border to the header cells */
+}
+
+.grid-row {
+  display: contents; /* Allows for grid items to flow into the grid template */
+}
+
+.grid-item {
+  padding: 10px;
+  border: 1px solid black; /* Adding black border to the data cells */
+  text-align: center;
+}

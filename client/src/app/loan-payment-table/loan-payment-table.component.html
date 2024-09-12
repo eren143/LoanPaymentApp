@@ -1,0 +1,23 @@
+<!-- Display the loan payment grid if available -->
+<div *ngIf="isTableAvailable">
+  <h2>Loan Payment Schedule</h2>
+  
+  <!-- Grid Headers -->
+  <div class="grid-container">
+    <div class="grid-header">Payment Number</div>
+    <div class="grid-header">Monthly Installment</div>
+    <div class="grid-header">Principal Payment</div>
+    <div class="grid-header">Interest Payment</div>
+    <div class="grid-header">Remaining Balance</div>
+
+    <!-- Grid Rows -->
+    <div *ngFor="let row of loanPaymentTable?.rows" class="grid-row">
+      <div class="grid-item">{{ row.paymentNumber }}</div>
+      <div class="grid-item">{{ row.monthlyInstallment | number: '1.2-2' }}</div>
+      <div class="grid-item">{{ row.principalPayment | number: '1.2-2' }}</div>
+      <div class="grid-item">{{ row.interestPayment | number: '1.2-2' }}</div>
+      <div class="grid-item">{{ row.remainingBalance | number: '1.2-2' }}</div>
+    </div>
+  </div>
+</div>
+        

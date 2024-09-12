@@ -1,0 +1,14 @@
+<div class="content">
+<form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+    <label for="loan-amount" class="form-label">Loan Amount</label>
+    <input id="loan-amount" type="number" formControlName="loanAmount" class="form-control" placeholder="Enter loan amount">
+  
+    <label for="loan-duration-months" class="form-label">Duration (months)</label>
+    <input id="loan-duration-months" type="number" formControlName="durationMonths" class="form-control" placeholder="Enter duration in months">
+
+    <label for="loan-interest" class="form-label">Monthly Interest Rate</label>
+    <input id="loan-interest" type="number" formControlName="interestRate" class="form-control" placeholder="Enter monthly interest rate">
+  
+  <button type="submit" class="btn btn-primary" [disabled]="loanForm.invalid">Calculate Payment Schedule</button>
+</form>
+<div>

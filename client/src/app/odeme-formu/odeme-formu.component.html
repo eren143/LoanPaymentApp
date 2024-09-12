@@ -1,0 +1,74 @@
+
+
+
+<div class="content container mt-4">
+    <form [formGroup]="OdemeFormu" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <h4 class="mb-3 mt-4">Kredi ödeme planı</h4>
+      <div class="mb-3">
+        <label for="krediTutari" class="form-label">Kredi Tutarı</label>
+        <input
+          id="krediTutari"
+          type="number"
+          formControlName="krediTutari"
+          class="form-control"
+          placeholder=""
+          required
+        />
+        <div class="invalid-feedback">Lütfen geçerli bir kredi tutarı giriniz.</div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="vade" class="form-label">Vade (ay)</label>
+        <input id="vade" type="number" formControlName="vade" class="form-control" placeholder="" required />
+        <div class="invalid-feedback">Lütfen geçerli bir vade giriniz.</div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="faiz" class="form-label">Faiz Oranı</label>
+        <input id="faiz" type="number" formControlName="faiz" class="form-control" placeholder="" required />
+        <div class="invalid-feedback">Lütfen geçerli bir faiz oranı giriniz.</div>
+      </div>
+      
+      <h4 class="mb-3 mt-4">Ara ödeme bilgileri:</h4>
+
+      <div class="mb-3">
+        <label for="araOdemeTutari" class="form-label">Ara Ödeme Tutarı</label>
+        <input
+          id="araOdemeTutari"
+          type="number"
+          formControlName="araOdemeTutari"
+          class="form-control"
+          placeholder=""
+          
+        />
+        <div class="invalid-feedback">Lütfen geçerli bir ara ödeme tutarı giriniz.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="ilkAraOdemeTaksitNo" class="form-label">İlk Ara Ödeme Taksit No</label>
+        <input
+          id="ilkAraOdemeTaksitNo"
+          type="number"
+          formControlName="ilkAraOdemeTaksitNo"
+          class="form-control"
+          placeholder=""
+        />
+        <div class="invalid-feedback">Lütfen geçerli bir taksit numarası giriniz.</div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="araOdemeSikliği" class="form-label">Ara Ödeme Sıklığı (ay)</label>
+        <input
+          id="araOdemeSikliği"
+          type="number"
+          formControlName="araOdemeSikliği"
+          class="form-control"
+          placeholder=""
+          
+        />
+        <div class="invalid-feedback">Lütfen geçerli bir ara ödeme sıklığı giriniz.</div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary w-100" [disabled]="OdemeFormu.invalid">Ödeme Planı Oluştur</button>
+    </form>
+  </div>
