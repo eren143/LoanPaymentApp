@@ -37,4 +37,8 @@ export class AraOdemeService {
     // Send GET request with query parameters
     return this.http.get<AraOdemePlani>("http://localhost:5000/api/loanpayment/calculate", { params })
   }
+  getTableById(tableId: number): Observable<AraOdemePlani> {
+    const url = `${this.baseUrl}/AraOdeme/get/${tableId}`;
+    return this.http.get<AraOdemePlani>(url);
+  }
 }

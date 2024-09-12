@@ -25,6 +25,7 @@ namespace API.Services
             Console.WriteLine($"TAKSit: {taksit}");
 
             var odemePlani = new OdemePlani();
+            odemePlani.OdemeSayisi = vade;
 
             var kalanPara = krediTutari;
 

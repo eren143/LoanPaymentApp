@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using API.Data;
 using API.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace API.Controllers
 {
     [Route("api/[controller]")]
@@ -18,7 +20,7 @@ namespace API.Controllers
 
 
         [HttpGet("calculate")]
-        public ActionResult<OdemePlani> CalculateAraOdeme(
+        public async Task<ActionResult<OdemePlani>> CalculateAraOdeme(
             [FromQuery] double krediTutari,
             [FromQuery] int vade,
             [FromQuery] double faiz,
@@ -34,9 +36,36 @@ namespace API.Controllers
             }
 
             // Perform the calculation logic for the payment plan
-            OdemePlani odemePlani = _araOdemeService.AraOdemePlaniOlustur(krediTutari, vade, faiz, ilkAraOdemeTaksitNo, araOdemeSikliği, araOdemeTutari);
+            var odemePlani = _araOdemeService.AraOdemePlaniOlustur(krediTutari, vade, faiz, ilkAraOdemeTaksitNo, araOdemeSikliği, araOdemeTutari);
+
+                // Save the payment table to the database
+            await _context.AddAsync(odemePlani);
+            await _context.SaveChangesAsync();
 
             // Return the calculated payment plan
+            return Ok(odemePlani);
+        }
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<OdemePlani>> GetOdemePlani(int id)
+        {
+            // Validate the input
+            if (id <= 0)
+            {
+                return BadRequest("Invalid ID.");
+            }
+
+            // Retrieve the payment plan from the database
+                var odemePlani = await _context.AraOdemePlanlari
+            .Include(o => o.Satirlar) // Eager load related data
+            .FirstOrDefaultAsync(o => o.Id == id);
+
+            // Check if the payment plan was found
+            if (odemePlani == null)
+            {
+                return NotFound("Payment plan not found.");
+            }
+
+            // Return the payment plan
             return Ok(odemePlani);
         }
 

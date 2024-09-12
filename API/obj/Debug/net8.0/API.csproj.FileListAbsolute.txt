@@ -253,3 +253,4 @@
 /Users/erenanbar/Desktop/CreditPaymentApp/API/obj/Debug/net8.0/API.pdb
 /Users/erenanbar/Desktop/CreditPaymentApp/API/obj/Debug/net8.0/API.genruntimeconfig.cache
 /Users/erenanbar/Desktop/CreditPaymentApp/API/obj/Debug/net8.0/ref/API.dll
+/Users/erenanbar/Desktop/CreditPaymentApp/API/obj/Debug/net8.0/API.sourcelink.json

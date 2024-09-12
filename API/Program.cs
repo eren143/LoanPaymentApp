@@ -12,9 +12,13 @@ builder.Services.AddDbContext<AraOdemeContext>(opt =>
 });
 
 
+
 builder.Services.AddScoped<LoanCalculationService>();
 builder.Services.AddScoped<AraOdemeService>();
-
+builder.Services.AddControllers().AddJsonOptions(opts =>
+        {
+            opts.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        });
 
 
 

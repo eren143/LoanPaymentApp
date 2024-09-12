@@ -24,5 +24,16 @@
         </tbody>
       </table>
     </div>
+    <div class="mt-4">
+      <p >Table ID: {{ odemePlani.id }}</p>
+    </div>
   </div>
-  
+
+  <!-- Input field and button for fetching a new table -->
+<div class="container mt-4">
+  <div class="form-group">
+    <label for="tableIdInput">Enter Table ID:</label>
+    <input id="tableIdInput" type="number" class="form-control" [(ngModel)]="inputTableId" placeholder="Enter table ID">
+  </div>
+  <button class="btn btn-primary mt-2" (click)="fetchTableById()">Fetch Table</button>
+</div>

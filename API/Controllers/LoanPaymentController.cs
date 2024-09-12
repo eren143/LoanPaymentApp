@@ -20,13 +20,16 @@ namespace API.Controllers
         }
 
         [HttpGet("calculate")]
-        public ActionResult<LoanPaymentTable> Calculate(double krediTutari, double faiz, int vade)
+        public async Task<ActionResult<LoanPaymentTable>> Calculate(double krediTutari, double faiz, int vade)
         {
             try
             {
                 // Calculate loan payment schedule
                 var odemePlani = _loanCalculationService.CalculateLoanPaymentSchedule(krediTutari, faiz, vade);
                 // Return the payment table
+                                // Save the payment table to the database
+            await _context.AddAsync(odemePlani);
+            await _context.SaveChangesAsync();
                 return Ok(odemePlani);
             }
             catch (Exception ex)
